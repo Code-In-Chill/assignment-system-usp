@@ -1,9 +1,6 @@
 package fis.baolm2.storage.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
+import jakarta.persistence.*;
 
 @NamedQueries({
         @NamedQuery(name = "getUserByUsername", query = "select u from UserEntity u where u.username = :username"),
@@ -21,8 +18,12 @@ public class UserEntity {
 
     private String username;
     private String email;
-    private String password;
     private String phone;
+
+    @Column(name = "firstname")
+    private String firstName;
+    @Column(name = "lastname")
+    private String lastName;
 
     public String getId() {
         return id;
@@ -48,19 +49,27 @@ public class UserEntity {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
